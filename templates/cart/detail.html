@@ -1,0 +1,62 @@
+{% extends "home.html" %}
+{% load static %}
+{% block search %}
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../../static/css/cart.css">
+
+<h1>My shopping cart</h1>
+<table class="cart">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Ticker</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Remove</th>
+        <th>Unit price</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+    {% with product=item.product %}
+    <tr>
+        <td class="ticker-image">
+            <img src="{{ product.category.image.url }}">
+        </td>
+        <td>{{ product.category.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>
+            <a href="{% url 'cart_update_quantity' product.id 'decrease' %}">-</a>
+            {{ item.quantity }}
+            <a href="{% url 'cart_update_quantity' product.id 'increase' %}">+</a>
+        </td>
+        <td><a href="{% url 'cart_remove' product.id%}">Remove</a></td>
+        <td class="num">${{ item.price }}</td>
+        <td class="num">${{ item.total_price }}</td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    <tr class="total">
+        <td>Total</td>
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_total_price }}</td>
+    </tr>
+    </tbody>
+</table>
+<p class="text-right" style="padding-top: 20px">
+    {% if cart|length < 1 %}
+    Cart is empty
+    {% endif %}
+    <!--    <a href="{{request.META.HTTP_REFERER|escape}}" class="button light">Continue shopping</a>-->
+    <a href="{% url 'home' %}" class="button light">Continue shopping</a>
+    {% if user.is_authenticated %}
+    {% if cart|length > 0 %}
+    <a href="{% url 'order_create' %}" class="button">Checkout</a>
+    {% endif %}
+    {% else %}
+    <a href="{% url 'login' %}?next=/orders/create/" class="button">Checkout</a>
+    {% endif %}
+</p>
+{% endblock %}

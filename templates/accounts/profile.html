@@ -1,0 +1,74 @@
+{% extends "home.html" %}
+{% load static %}
+{% block search %}
+{% endblock %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+<link rel="stylesheet" href="{% static 'css/payment_popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/review_popup.css' %}">
+
+{% include "payment/payment_popup.html" %}
+{% include "review/review_popup.html" %}
+
+<div class="user-profile">
+    <div class="profile-header">
+        <div class="profile-picture">
+            <span class="profile-initial">{{ user.username|make_list|first }}</span>
+        </div>
+        <div class="profile-details">
+            <h2>{{ user.username }}'s Profile</h2>
+            <p>Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <div class="order-history">
+        <h3>Order History</h3>
+        <p>Check the status of recent orders, manage returns, and discover similar products</p>
+
+        {% for order in orders %}
+        <div class="order-details">
+            <div class="order-header">
+                <span class="order-number">Order Number: {{ order.id }}</span>
+                <span class="order-date">Date Placed: {{ order.created }}</span>
+            </div>
+
+            {% for item in order.items.all %}
+            <div class="product-item">
+                <img src="{{ item.product.category.image.url }}" alt="{{ item.product.category.name }} Image">
+                <div class="product-info">
+                    <h4>{{ item.product.name }}</h4>
+                    <p>Price: {{ item.get_cost }}</p>
+                </div>
+                <div class="product-price"> {{ item.quantity }} * {{ item.price }}</div>
+                <div class="product-actions">
+                    <button class="btn view-product" onclick="window.location='{% url 'products' slug=item.product.slug %}';">View Product</button>
+                    <button class="btn leave-review" data-id="{{ item.product.id }}" data-name="{{ item.product.name }}" >Leave Review</button>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="order-total">
+                <span class="total-label">Total Amount:</span>
+                <span class="total-amount">{{ order.get_total_cost }}</span>
+                <div class="product-status">
+                    {% if order.paid %}
+                    <span class="status delivered">Payment Completed</span>
+                    {% else %}
+                    <span class="status pending">UnPaid</span>
+                    {% endif %}
+                </div>
+                 {% if not order.paid %}
+                <button class="btn make-payment" data-total="{{ order.get_total_cost }}" data-id="{{ order.id }}">Make
+                    Payment
+                </button>
+                 {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="{% static 'js/payment_popup.js' %}"></script>
+<script src="{% static 'js/review_popup.js' %}"></script>
+
+{% endblock %}

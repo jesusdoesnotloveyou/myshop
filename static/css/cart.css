@@ -1,0 +1,42 @@
+.cart {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.cart th,
+.cart td {
+    border: none;
+    padding: 8px;
+    text-align: right;
+}
+
+.cart tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.ticker-image img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover;
+    float: left;
+}
+
+
+.ticker-name {
+    font-weight: bold;
+    color: #0C57EA;
+    text-align: left;
+}
+
+.ticker-item:hover .ticker-name {
+    text-decoration: underline;
+}
+
+th.title-name {text-align: left;}
+
+.ticker-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+}

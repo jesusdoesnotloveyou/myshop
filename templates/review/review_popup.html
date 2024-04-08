@@ -1,0 +1,20 @@
+<div id="reviewPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn-re">&times;</span>
+        <h2 id="review-h2" style="padding-bottom:20px;">Leave a Review</h2>
+
+        {% include "review/stars.html" %}
+        <div class="review-content">
+            <form method="POST" id="review-form">
+                {{ review_form.as_p }}
+                {% csrf_token %}
+            </form>
+
+        </div>
+        <div class="submit-review-container">
+            <button class="proceed-btn" id="submit-review-btn" type="submit" form="review-form">
+                Submit review
+            </button>
+        </div>
+    </div>
+</div>

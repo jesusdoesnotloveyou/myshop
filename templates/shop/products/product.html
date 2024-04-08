@@ -1,0 +1,44 @@
+{% extends "home.html" %}
+{% load static %}
+{% block search %}
+{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+
+<div class="option-container">
+  <div class="option-data">
+    <span class="option-name">AAPL Mar 2024 105.000 call</span>
+    <span class="opr-price">OPR - <span class="opr-delayed-price">67.05</span> USD</span>
+    <span class="change-percent">(0.00%)</span>
+    <span class="additional-info">
+      <span class="as-of">As of 15 March 03:28PM EDT. Market open.</span>
+      <span class="summary-chart">Summary Chart 1D 5D 1M 6M YTD 1Y 5Y Max</span>
+    </span>
+  </div>
+  <div class="option-info">
+    <span class="previous-close">Previous close: 67.05</span>
+    <span class="expiry-date">Expiry date: 2024-03-22</span>
+    <span class="open-price">Open: 67.04</span>
+    <span class="day-range">Day's range: N/A - N/A</span>
+    <span class="bid-price">Bid: 0.00</span>
+    <span class="ask-price">Ask: 0.00</span>
+    <span class="volume">Volume: N/A</span>
+    <span class="strike-price">Strike: 105.00</span>
+    <span class="open-interest">Open interest: N/A</span>
+  </div>
+
+  <div class="review-row">
+    <div class="rating">
+      <span class="username">User Name</span>
+      <span class="rating-score">
+        <span class="star">&#9733;</span>
+        4.5
+      </span>
+    </div>
+    <span class="review-text">This is the review text. It can span multiple lines and contain any relevant information about the option.</span>
+</div>
+
+</div>
+{% endblock %}

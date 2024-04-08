@@ -1,0 +1,49 @@
+<div class="main-body">
+    <h2>
+        {% if request.GET.search_query %}
+        {% if list_of_tickers %}
+        Ticker search results for "{{ request.GET.search_query }}"
+        {% else %}
+        No Tickers found for "{{ request.GET.search_query }}"
+        <img src="../../static/images/empty_result.gif" alt="Empty Result GIF" style="padding-top: 20px;">
+        {% endif %}
+        {% else %}
+        Tickers
+        {% endif %}
+    </h2>
+    {% if list_of_tickers %}
+    <table class="ticker-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th class="title-name">Name</th>
+            <th>Last Price</th>
+            <th>Change</th>
+            <th>% Change</th>
+            <th>Volume</th>
+            <th>Market Cap</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ticker in list_of_tickers %}
+        <tr class="ticker-item" onclick="window.location='{% url 'details' slug=ticker.slug %}';">
+            <td class="ticker-image"><img src="{{ ticker.image.url }}" alt="{{ ticker.name }} Image"></td>
+            <td>
+                <div class="ticker-name">{{ ticker.name }}</div>
+                <div class="ticker-full-name">{{ ticker.full_name }}</div>
+            </td>
+            <td>{{ ticker.last_price }}</td>
+            <td class="ticker-change {% if ticker.percent_change < 0 %}negative{% else %}positive{% endif %}">
+                {{ ticker.change }}
+            </td>
+            <td class="ticker-percent-change {% if ticker.percent_change < 0 %}negative{% else %}positive{% endif %}">
+                {{ ticker.percent_change }}
+            </td>
+            <td>{{ ticker.volume }}</td>
+            <td>{{ ticker.market_cap }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>

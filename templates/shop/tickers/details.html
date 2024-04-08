@@ -1,0 +1,77 @@
+{% extends "home.html" %}
+
+{% block search %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../../static/css/ticker_details.css">
+
+<div class="ticker-header">
+    <h2>{{ ticker.full_name }} ({{ ticker.name }})</h2>
+    <p>Company Rating: {{ ticker.rating }}</p>
+    <p class="current-price">{{ ticker.last_price }} <span class="change">{{ ticker.change }} ({{ ticker.percent_change }}%)</span>
+    </p>
+</div>
+
+<div class="ticker-description">
+    <p>{{ ticker.description }}</p>
+</div>
+
+<div class="ticker-filters">
+    <h3>Filter options</h3>
+    <!-- Add filter components as needed -->
+    <!-- Example filter component: -->
+    <label for="filter-by-type">Filter by Type:</label>
+    <select id="filter-by-type">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <!-- Add more options as needed -->
+    </select>
+</div>
+
+<h3>Options List</h3>
+<table class="ticker-table">
+    <thead>
+    <tr>
+        <th></th>
+        <th class="title-name">Contract Name</th>
+        <th>Strike</th>
+        <th>Close</th>
+        <th>Open</th>
+        <th>Bid</th>
+        <th>Ask</th>
+        <th>Volume</th>
+        <th>Expiration Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for option in options %}
+    <tr class="ticker-item" onclick="window.location='{% url 'products' slug=option.slug %}';">
+        <td>
+            <div class="option-type {% if option.option_type == 'Call' %}call{% else %}put{% endif %}">{{ option.option_type }}
+            </div>
+        </td>
+        <td>
+            <div class="ticker-name">{{ option.name }}</div>
+        </td>
+        <td>{{ option.strike }}</td>
+        <td>{{ option.open }}</td>
+        <td>{{ option.close }}</td>
+        <td>{{ option.bid }}</td>
+        <td>{{ option.ask }}</td>
+        <td>{{ option.volume }}</td>
+        <td>{{ option.expiration_date }}</td>
+        <td>
+            <form action="{% url 'cart_add' option.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

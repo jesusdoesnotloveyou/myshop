@@ -1,0 +1,37 @@
+<!-- Payment Popup -->
+<div id="paymentPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h2>Payment</h2>
+        <p>Complete payment for order <strong id="popup_orderId">21</strong></p>
+        <h3 id="popup_price">Total Price</h3>
+        <p>Choose payment method below</p>
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" id="cardPayment" name="paymentMethod" checked>
+                <label for="cardPayment">
+                    <i class="fas fa-credit-card"></i>with Credit Card
+                </label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="qrPayment" name="paymentMethod">
+                <label for="qrPayment">
+                    <i class="fas fa-qrcode"></i>with QR Code
+                </label>
+            </div>
+        </div>
+        <div id="cardPaymentForm" class="payment-form">
+            <form method="post" class="order-form" id="form1">
+                {{ form.as_p }}
+                {% csrf_token %}
+            </form>
+        </div>
+        <div id="qrPaymentForm" class="payment-form" style="display: none;justify-content: center;">
+            <script>
+                var x = Math.floor((Math.random() * 99) + 1);
+                document.write("<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + x + "'>")
+            </script>
+        </div>
+        <button id="proceedBtn" class="proceed-btn" type="submit" form='form1'>Proceed</button>
+    </div>
+</div>

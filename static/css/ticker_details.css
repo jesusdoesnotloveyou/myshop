@@ -1,0 +1,58 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.ticker-header {
+    margin-bottom: 20px;
+}
+
+.ticker-header h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.ticker-header p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.change {
+    color: #008000; /* Green for positive change */
+}
+
+.ticker-description {
+    margin-bottom: 20px;
+}
+
+.ticker-filters,
+.options-table {
+    margin-bottom: 20px;
+}
+
+.ticker-filters h3,
+.options-table h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.option-type {
+    color: black;
+    border-radius: 50px;
+    text-align: center;
+    padding: 2px 6px;
+}
+
+.option-type.call {
+    background-color: #3CBA06;
+}
+
+.option-type.put {
+    background-color: #F61B1B;
+}

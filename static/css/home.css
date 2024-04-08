@@ -1,0 +1,170 @@
+body, h1, h2, p, a, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text */
+}
+
+header {
+    background-color: #1530EE; /* Blue header background */
+    color: #fff; /* White text */
+    padding: 0px 40px;
+    height: 80px; /* Set a specific height for the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+    padding: 5px; /* Add padding to the title */
+}
+
+header .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Use the remaining space in the header */
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+header .search-container {
+    display: flex;
+    align-items: center;
+}
+
+header input {
+    width: 24rem;
+    padding: 12px;
+    margin-right: 2px;
+    border: 1px solid #fff; /* White border */
+    border-radius: 5px;
+}
+
+header button.search-icon-btn {
+    padding: 8px;
+    background-color: white; /* Transparent background for the button */
+    border: none; /* Remove border */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+header button.search-icon-btn img {
+    width: 20px; /* Adjust the width of the search icon */
+    height: 20px; /* Adjust the height of the search icon */
+}
+
+header a {
+    color: #fff; /* White links */
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+#cart-count {
+    background-color: #fff; /* White background for cart count */
+    color: #3498db; /* Blue text for cart count */
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 28%;
+}
+
+.sidebar.filter-item {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.content-wrapper {
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.main-body {
+    width: 70%;
+}
+
+.ticker-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.ticker-item:hover {
+    background-color: #C1D5FD; /* Change background color on hover */
+}
+
+.ticker-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.ticker-table th,
+.ticker-table td {
+    border: none;
+    padding: 8px;
+    text-align: right;
+}
+
+.ticker-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.ticker-image img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover;
+    float: left;
+}
+
+
+.ticker-name {
+    font-weight: bold;
+    color: #0C57EA;
+    text-align: left;
+}
+
+.ticker-item:hover .ticker-name {
+    text-decoration: underline;
+}
+
+th.title-name {text-align: left;}
+
+.ticker-full-name {
+    font-style: italic;
+    text-align: left;
+}
+
+.ticker-change, .ticker-percent-change {
+    transition: color 0.3s; /* Add smooth transition for color change */
+}
+
+.ticker-change.negative, .ticker-percent-change.negative {
+    color: red; /* Set color to red for negative values */
+}
+
+.ticker-change.positive, .ticker-percent-change.positive {
+    color: green; /* Set color to green for positive values */
+}

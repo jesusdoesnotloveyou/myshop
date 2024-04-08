@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <h2>Filters</h2>
+    <form method="GET" action="{% url 'home' %}">
+        <div class="filter-item">
+            <label for="isTrading">Is Trading:</label>
+            <select name="isTrading" id="isTrading">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort">
+                <option value="volume_asc">Volume - Ascending</option>
+                <option value="volume_desc">Volume - Descending</option>
+                <option value="market_cap_asc">Market Cap - Ascending</option>
+                <option value="market_cap_desc">Market Cap - Descending</option>
+            </select>
+        </div>
+    </form>
+</div>

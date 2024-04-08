@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% load static %}
+{% block search %}
+{% endblock %}
+
+{% block content %}
+
+<h1>Thank you</h1>
+<p>Your order has been successfully completed. Your order number is
+    <strong>{{ order.id }}</strong>.
+</p>
+
+<h2 style="padding-top: 20px">Order Details</h2>
+
+<ul style="padding-top: 10px">
+    <li>Order ID: {{ order.id }}</li>
+    <li>Date: {{ order.created }}</li>
+    <li>Address: {{ order.address }}, {{ order.city }}</li>
+    <li>Total: <strong>{{ order.get_total_cost }} </strong>.</li>
+</ul>
+
+<h4>A confirmation has been sent to {{ order.email }} </h4>
+{% endblock %}

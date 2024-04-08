@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+<h1> Welcome to option shop </h1>
+<div class="auth">
+    <main class='login form'>
+        <h2> Login </h2>
+        <section>
+            <form method='POST'>
+                {% csrf_token %}
+                <div class='login'>
+
+                    <label for="{{ form.username.id_for_label }}">Username:</label>
+                    {{ form.username }}
+
+                    <label for="{{ form.password.id_for_label }}">Password:</label>
+                    {{ form.password }}
+
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <h4>Don't have an account? <a href="{% url 'signup' %}" ><span> Sign Up </span></a></h4>
+        </section>
+    </main>
+</div>
+</body>
+
+</html>

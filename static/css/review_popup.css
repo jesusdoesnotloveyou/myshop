@@ -1,0 +1,72 @@
+.close-btn-re {
+  margin: 0;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn-re:hover,
+.close-btn-re:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.review-content label {
+  margin-bottom: 20px;
+}
+.review-content textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+  border-radius: 5px;
+}
+.close-btn {
+  color: #aaa;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.submit-review-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.rate {
+    display: inline-block;
+    height: 60px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
