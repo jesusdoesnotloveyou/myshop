@@ -8,8 +8,8 @@ from django.views import generic
 from django.views.decorators.http import require_POST
 
 from orders.forms import PaymentForm
+from orders.models import Order
 from shop.forms import ReviewForm
-from shop.models import Order
 from shop.models import Review, Product
 
 
@@ -47,7 +47,7 @@ def complete_payment(request, order_id):
 
     Thank you for your Payment
           '''
-    send_mail(f'Payment from AI options', message, None, [order.email])
+    send_mail(f'Payment from Yahoo! Finance', message, None, [order.email])
     return redirect('profile')
 
 

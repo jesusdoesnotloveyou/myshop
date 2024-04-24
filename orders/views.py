@@ -1,14 +1,14 @@
+# Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
 from accounts.views import user_profile
-from .forms import OrderCreateForm
 from .models import OrderItem
+from .forms import OrderCreateForm
 from cart.cart import Cart
 
 
-# Create your views here.
 @login_required
 def order_create(request):
     cart = Cart(request)
@@ -36,7 +36,7 @@ def order_create(request):
 
         Thank you for your order
       '''
-            send_mail(f'Order from AI options on {order.created}', message, None, [order.email])
+            send_mail(f'Order from Yahoo! Finance on {order.created}', message, None, [order.email])
             return render(request, 'orders/order/created.html',
                           {'order': order})
     else:

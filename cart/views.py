@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 
 from shop.models import Product
 from .cart import Cart
-from .forms import CartAddProductForm
+from .form import CartAddProductForm
 
 
 # Create your views here.
@@ -19,7 +19,6 @@ def cart_add(request, product_id):
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-        # так как используется структура словаря, то добавление уже имеющегося продукта в корзину увеличит его количество
     return redirect('cart_detail')
 
 

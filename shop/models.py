@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import CheckConstraint, Q, Count, Avg
+from django.db.models import CheckConstraint, Q, Avg, Count
 from django.urls import reverse
 
 

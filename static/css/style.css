@@ -11,6 +11,7 @@ main {
 
 section{
   width: 80%;
+  margin: 50px;
 }
 
 h2 {
@@ -63,7 +64,7 @@ button {
   align-self: center;
   border: none;
   border-radius: 5px;
-  background-color: #4287f5;
+  background-color: #2d156e;
   color: white;
   font-size: 16px;
   font-weight: bold;
